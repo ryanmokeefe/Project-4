@@ -42,6 +42,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 		}
 
+	//// ThirdPersonCharacter Standard Asset Script
 
 		public void Move(Vector3 move, bool crouch, bool jump)
 		{
@@ -113,10 +114,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				}
 			}
 		}
-
+	
 
 		void UpdateAnimator(Vector3 move)
 		{
+			
+	//// ThirdPersonCharacter Standard Asset Script
+
 			// update the animator parameters
 			m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
 			m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);

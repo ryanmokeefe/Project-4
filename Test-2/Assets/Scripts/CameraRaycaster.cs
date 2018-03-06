@@ -28,15 +28,16 @@ public class CameraRaycaster : MonoBehaviour
     }
 
 	// must declare new DELEGATE type
-	public delegate void OnLayerChange();
+	public delegate void OnLayerChange(Layer newLayer);
 	// instantiate new Delegate Observer SET
-	public OnLayerChange layerChangeObservers;
+		// using EVENT keyword to protect delegate
+	public event OnLayerChange layerChangeObserver;
 
-	// THIS must conform to the same signature as declared Delegate type above; ie: no params, void.
-	void LayerChangeHandler() {
-		print("something");
-	}
-
+	// ex. THIS must conform to the same signature as declared Delegate type above; ie: no params, void.
+//	void LayerChangeHandler() {
+//		print("something");
+//	}
+//
 
 
 
@@ -44,10 +45,9 @@ public class CameraRaycaster : MonoBehaviour
     {
         viewCamera = Camera.main;
 		// make sure to ADD the observers set, not overwrite with =.
-		layerChangeObservers += LayerChangeHandler;
 
-		// call delegate
-		layerChangeObservers();
+//		// call delegate
+		// layerChangeObserver(layer);
     }
 
     void Update()
@@ -59,6 +59,15 @@ public class CameraRaycaster : MonoBehaviour
             if (hit.HasValue)
             {
                 m_hit = hit.Value;
+//				if layerHit has changed
+				if (layerHit != layer) 
+				{
+					m_layerHit = layer;
+					// call the delegates
+					layerChangeObserver (layer);
+				
+				}
+
                 m_layerHit = layer;
                 return;
             }

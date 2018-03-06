@@ -29,14 +29,18 @@ public class CursorAffordance : MonoBehaviour {
 		
 		// use CameraRayaster.cs
 		cameraRaycaster = GetComponent<CameraRaycaster>();
+		// register delegate calls
+		cameraRaycaster.layerChangeObserver += OnLayerChanged;
 	}
 	
 	// Update is called once per frame
-	void LateUpdate () {
+	void OnLayerChanged (Layer newLayer) {
+
+		print("Cursor is on new layer");
 
 //		Vector3 mouse = Input.GetMouseButton(0);
 
-		switch (cameraRaycaster.layerHit) {
+		switch (newLayer) {
 			// cursor for walk
 		case Layer.Walkable:
 			Cursor.SetCursor(walkCursor, cursorHotspot, CursorMode.Auto);
@@ -55,4 +59,8 @@ public class CursorAffordance : MonoBehaviour {
 			return;
 		}
 	}
+
+	// TODO - consider deregistering OnLayerChanged on leaving all game scenes
+
+
 }

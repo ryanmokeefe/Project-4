@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CameraRaycaster))]
+
 public class CursorAffordance : MonoBehaviour {
 
 	// cursor imgs
@@ -16,7 +18,7 @@ public class CursorAffordance : MonoBehaviour {
 
 	[SerializeField]
 	// fine tuning of where you click
-	Vector2 cursorHotspot = new Vector2 (96, 96);
+	Vector2 cursorHotspot = new Vector2 (0, 0);
 
 
 
@@ -32,9 +34,8 @@ public class CursorAffordance : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 
-		// print layer hit for each frame
-//		print (cameraRaycaster.layerHit);
 //		Vector3 mouse = Input.GetMouseButton(0);
+
 		switch (cameraRaycaster.layerHit) {
 			// cursor for walk
 		case Layer.Walkable:
@@ -44,15 +45,14 @@ public class CursorAffordance : MonoBehaviour {
 			// cursor for enemy
 			Cursor.SetCursor(targetCursor, cursorHotspot, CursorMode.Auto);
 			break;
-//		case Layer.RaycastEndStop:
-//			// cursor for unknown
-//			Cursor.SetCursor (unknownCursor, cursorHotspot, CursorMode.Auto);
-//			break;
+		case Layer.RaycastEndStop:
+			// cursor for unknown
+			Cursor.SetCursor (unknownCursor, cursorHotspot, CursorMode.Auto);
+			break;
 		default: 
+			Cursor.SetCursor(walkCursor, cursorHotspot, CursorMode.Auto);
 			Debug.LogError ("Cursor to show unknown");
 			return;
 		}
 	}
 }
-
-

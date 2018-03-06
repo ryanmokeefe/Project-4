@@ -12,10 +12,11 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField]
 	float walkMoveStopRadius = 0.2f;
 
-    ThirdPersonCharacter m_Character;   // A reference to the ThirdPersonCharacter on the object
+	// A reference to the ThirdPersonCharacter on the object
+    ThirdPersonCharacter m_Character;   
     CameraRaycaster cameraRaycaster;
     Vector3 currentClickTarget;
-	bool isInDirectMode = false; // make static later
+	bool isInDirectMode = false; 
 
 
     private void Start()
@@ -43,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
 		// allow player to remap G later
 		if (Input.GetKeyDown (KeyCode.G)) { 
 			isInDirectMode = !isInDirectMode;
+			// clear last clickTarget position
+			currentClickTarget = transform.position;
 		}
 		if (isInDirectMode) {
 			// process direct movement
@@ -57,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
 
 
 	private void ProcessDirectMovement() {
-
 
 		// read inputs
 		float h = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -76,7 +78,10 @@ public class PlayerMovement : MonoBehaviour
 	
 		if (Input.GetMouseButton(0))
 		{
-			//            print("Cursor raycast hit" + cameraRaycaster.hit.collider.gameObject.name.ToString());
+			// TODO - move mouse movement from TPC
+
+
+			// print("Cursor raycast hit" + cameraRaycaster.hit.collider.gameObject.name.ToString());
 			print("Cursor raycast hit" + cameraRaycaster.layerHit);
 
 			switch (cameraRaycaster.layerHit) 

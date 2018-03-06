@@ -27,9 +27,27 @@ public class CameraRaycaster : MonoBehaviour
         get { return m_layerHit; }
     }
 
-    void Start() // TODO Awake?
+	// must declare new DELEGATE type
+	public delegate void OnLayerChange();
+	// instantiate new Delegate Observer SET
+	public OnLayerChange layerChangeObservers;
+
+	// THIS must conform to the same signature as declared Delegate type above; ie: no params, void.
+	void LayerChangeHandler() {
+		print("something");
+	}
+
+
+
+
+    void Start() 
     {
         viewCamera = Camera.main;
+		// make sure to ADD the observers set, not overwrite with =.
+		layerChangeObservers += LayerChangeHandler;
+
+		// call delegate
+		layerChangeObservers();
     }
 
     void Update()

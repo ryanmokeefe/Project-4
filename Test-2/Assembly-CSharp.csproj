@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Camera and UI\CursorAffordance.cs" />
+     <Compile Include="Assets\Camera and UI\SomeObserver.cs" />
      <Compile Include="Assets\Knight\scripts\rotator.cs" />
      <Compile Include="Assets\Mixamo\Melee Axe Pack\Demo\CameraScroll.cs" />
      <Compile Include="Assets\Scripts\AttackAnimatorScript.cs" />

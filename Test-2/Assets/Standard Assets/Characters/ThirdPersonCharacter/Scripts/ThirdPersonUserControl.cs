@@ -13,9 +13,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
+			// move to TPChar script - 
+		// attack script
+
+		public float Attack;
+		public float timeOut = 3f;
+		public bool startTimer;
+
+		private Animator anim;
+
         
         private void Start()
         {
+			// move to TPChar script - 
+
+			anim = GetComponent<Animator> ();
+
+
+
             // get the transform of the main camera
             if (Camera.main != null)
             {
@@ -49,6 +64,67 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             float v = CrossPlatformInputManager.GetAxis("Vertical");
             bool crouch = Input.GetKey(KeyCode.C);
+
+
+
+
+			// ATTACKS / FIGHTING ANIMS
+
+				// get user input for attack1
+			if (Input.GetKey ("4")) {
+				Attack = 0.5f;
+				startTimer = true;
+			} 
+//				
+//			// get user input for attack2
+			if (Input.GetKey ("3")) {
+				Attack = 0.6666f;
+				startTimer = true;
+			}
+
+			// get user input for kick
+			if (Input.GetKey ("2")) {
+				Attack = 0.8333f;
+				startTimer = true;
+
+			}
+
+			// -- get user input for block --
+			if (Input.GetKey ("1")) {
+				Attack = 1f;
+				startTimer = true;
+			
+			} 
+
+			else if (timeOut <= 0) {
+				Attack = 0.0f;
+			}
+
+//			
+
+			anim.SetFloat ("Attack", Attack);
+
+
+			if (startTimer) {
+			
+				if (timeOut >= 0) {
+				
+					timeOut -= Time.deltaTime;
+				
+				} else if (timeOut <= 0) {
+
+					startTimer = false;
+
+				}
+			
+			}
+
+
+		//// END ATTACK SCRIPT
+
+
+
+
 
             // calculate move direction to pass to character
             if (m_Cam != null)

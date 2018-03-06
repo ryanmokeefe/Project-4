@@ -51,11 +51,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Camera and UI\CursorAffordance.cs" />
      <Compile Include="Assets\Knight\scripts\rotator.cs" />
      <Compile Include="Assets\Mixamo\Melee Axe Pack\Demo\CameraScroll.cs" />
      <Compile Include="Assets\Scripts\AttackAnimatorScript.cs" />
+     <Compile Include="Assets\Scripts\CameraRaycaster.cs" />
+     <Compile Include="Assets\Scripts\DisableAttack.cs" />
+     <Compile Include="Assets\Scripts\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\FollowCamera.cs" />
+     <Compile Include="Assets\Scripts\KillCharacter.cs" />
      <Compile Include="Assets\Scripts\PlayerAttacks.cs" />
+     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Score.cs" />
+     <Compile Include="Assets\Scripts\Utility.cs" />
      <None Include="Assets\Knight\shaders\particledistort.shader" />
      <None Include="Assets\Knight\shaders\clothshader.shader" />
      <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />

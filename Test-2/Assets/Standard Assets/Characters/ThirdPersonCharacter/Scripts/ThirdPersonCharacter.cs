@@ -76,6 +76,25 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			UpdateAnimator(move);
 		}
 
+	////  Project script
+
+		public void Attack() {
+
+			// get attack animation, 
+
+			// if running, blend run + attack
+
+			// if idle, play just attack
+
+
+
+		}
+
+
+
+		/// 
+		/// 
+
 
 		void ScaleCapsuleForCrouching(bool crouch)
 		{

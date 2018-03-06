@@ -39,11 +39,11 @@ public class PlayerAttacks : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// if "1": play melee	 // randomize melee attacks
-//		if (Input.GetKeyDown(KeyCode.F)) {
-//			m_Animator.Play("Attack");
-//
-//		}
+//		 if "1": play melee	 // randomize melee attacks
+		if (Input.GetKeyDown(KeyCode.F)) {
+			m_Animator.Play("Attack");
+
+		}
 
 		// if "2" - play kick
 
